@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Cita from './Cita';
 
-const Citas = () => {
+const Citas = ({ citas, borrarCita }) => {
     return (
         <section className='mx-0'>
             <header className='text-center p-3 border my-3'>
@@ -10,12 +10,12 @@ const Citas = () => {
             </header>
             <Container>
                 <Row className='d-flex justify-content-center'>
-                    <Col sm={6}>
-                        <Cita></Cita>
-                    </Col>
-                    <Col sm={6}>
-                        <Cita></Cita>
-                    </Col>
+                    {citas.map((cita, indice)=>{
+                        return  <Col key={indice} sm={6}>
+                                    <Cita borrarCita={borrarCita}  cita={cita}></Cita>
+                                </Col>
+                    })}
+                   
                 </Row>
             </Container>
         </section>
